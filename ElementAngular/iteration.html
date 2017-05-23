@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<head>
+    <meta charset="utf-8" />
+    <title>itération</title>
+</head>
+
+<body>
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        <ul>
+            <div ng-repeat="x in names">
+                <h1> itération pour {{x.prenom}} </h1>
+                <p> prenom :{{x.prenom}} <br/> nom : {{x.nom}}
+                </p>
+            </div>
+        </ul>
+
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+
+        app.controller('myCtrl', function($scope) {
+            $scope.names = [{
+                prenom: "Emil",
+                nom: "Tobias"
+            }, {
+                prenom: "Linus",
+                nom: "Jacques"
+            }];
+        });
+    </script>
+
+
+</body>
+
+</html>

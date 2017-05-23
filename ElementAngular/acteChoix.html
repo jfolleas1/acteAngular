@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Choix</title>
+</head>
+
+<body ng-app="">
+
+    <div>
+        <p>Name : <input type="text" ng-model="name" ng-init="name='Jacques'"></p>
+        <h1>Hello {{name}}</h1>
+    </div>
+
+    <div class="structureDeControle">
+        <select id="choix" ng-model="myVar" ng-init="myVar='Homme'">
+            <option>Homme</option>
+            <option>Femme</option>
+        </select>
+    </div>
+
+    <div ng-show=" myVar == 'Homme' ">
+        c'est un homme
+
+
+        <div class="structureDeControle">
+            <select id="choixMajeur" ng-model="majeur" ng-init="majeur='oui'">
+            <option>oui</option>
+            <option>non</option>
+        </select>
+        </div>
+
+        <p ng-show=" majeur == 'oui' ">
+            Il est majeur
+        </p>
+
+    </div>
+
+    <div ng-show=" myVar == 'Femme' ">
+        c'est une femme
+    </div>
+
+</body>
+
+</html>
