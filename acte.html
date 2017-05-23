@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="fr-FR">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
@@ -10,11 +10,32 @@
 
 <body>
     <div ng-app="monActe" ng-controller="monCtrl">
-        <h1> Procuration pour Vendre </h1>
 
 
+        <div class="structureDeControle">
+            <select id="Forme de la procuration" ng-model="Choix50125" ng-init="Choix50125='Sous seing privé'">
+                <option>Sous seing privé</option>
+                <option>Authentique</option>
+                <option>Brevet</option>
+            </select>
+        </div>
 
+        <div id="Section50128" ng-show="affichageSection50128()">
+            <h1> Procuration pour Vendre </h1>
+        </div>
 
+        <div id="Section50126" ng-show="affichageSection50126()">
+            <p>Acte N° {{codeActe}}</p>
+            <h4> L'an {{ annee }},</h4>
+            <h4> Le <input type="date" ng-model="dateActe"> ,
+            </h4>
+
+            <p><b> Maître {{notaire.prenom}}  {{notaire.nom}} </b> sou</p>
+        </div>
+
+        <div id="Section50130" ng-show="affichageSection50130()">
+            <p>Section50130</p>
+        </div>
 
     </div>
 
