@@ -13,7 +13,7 @@
 
 
         <div class="structureDeControle">
-            <select id="Forme de la procuration" ng-model="Choix50125" ng-init="Choix50125='Sous seing privé'">
+            <select id="FormeDeLaProcuration" ng-model="Choix50125" ng-init="Choix50125='Sous seing privé'">
                 <option>Sous seing privé</option>
                 <option>Authentique</option>
                 <option>Brevet</option>
@@ -30,12 +30,19 @@
             <h4> Le <input type="date" ng-model="dateActe"> ,
             </h4>
 
-            <p><b> Maître {{notaire.prenom}}  {{notaire.nom}} </b> sou</p>
+            <select id="TypeOfficeNotarial" ng-model="ChoixTypeOffice" ng-init="ChoixTypeOffice='SCP'">
+                <option>SCP</option>
+                <option>SEL</option>
+            </select>
+
+            <div id="SectionOfficeSCP" ng-show=affichageSectionOfficeSCP()>
+                <p><b> Maître {{notaire.prenom}}  {{notaire.nom}} </b> soussigné, notaire au sein de la Société Civile Professionnelle dénommée "{{office.nom}}" titulaire d'un Office Notarial à {{office.residence}} ({{office.codePostale}}), {{office.adresse}}.
+                    </p>
+            </div>
+
+
         </div>
 
-        <div id="Section50130" ng-show="affichageSection50130()">
-            <p>Section50130</p>
-        </div>
 
     </div>
 

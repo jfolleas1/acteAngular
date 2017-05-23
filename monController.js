@@ -13,10 +13,10 @@ app.controller('monCtrl', function($scope) {
     }
 
     $scope.office = {
-        nom: "Phillipe",
-        residence: "Antoine",
-        codePostale: "Phillipe",
-        adresse: "Antoine",
+        nom: "SERVEUR JURISTE",
+        residence: "BESANCON",
+        codePostale: 25000,
+        adresse: "CENTRE D AFFAIRE LA CITY"
     }
 
 
@@ -36,9 +36,20 @@ app.controller('monCtrl', function($scope) {
             return false;
         }
     }
-    $scope.affichageSection50130 = function() {
 
-        if ($scope.Choix50125 == "Brevet") {
+
+    $scope.affichageSectionOfficeSCP = function() {
+
+        if ($scope.ChoixTypeOffice == "SCP") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    $scope.affichageSectionOfficeSCP = function() {
+
+        if ($scope.ChoixTypeOffice == "SCP") {
             return true;
         } else {
             return false;
