@@ -178,6 +178,11 @@ app.controller('monCtrl', function($scope) {
         });
 
 
-    };
+    }
+
+    $scope.delMandant = function(index) {
+        $scope.mandants.splice(index, 1);
+    }
+
 
 });

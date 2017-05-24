@@ -82,6 +82,7 @@
                 <p>
                     <input type="text" ng-model="mandant.civilite"> <input type="text" ng-model="mandant.prenom"> <input type="text" ng-model="mandant.nom">, demeurant à <input type="text" ng-model="mandant.adresse.ville"> , <br \> (
                     <input type="text" ng-model="mandant.adresse.code">) ,<input type="text" ng-model="mandant.adresse.numVoie"> <input type="text" ng-model="mandant.adresse.nomVoie">, Célibataire.
+                    <input type="submit" value="-" ng-click="delMandant(index = $index)">
                 </p>
             </div>
             <input type="submit" value="+" ng-click="addMandant()">
