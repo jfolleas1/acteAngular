@@ -2,10 +2,13 @@
 <html lang="fr-FR">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <head>
     <meta charset="utf-8" />
     <title>Procuration Pour Vendre</title>
+    <link rel="stylesheet" type="text/css" href="styleActe.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 
 <body>
@@ -16,37 +19,115 @@
             <select id="FormeDeLaProcuration" ng-model="Choix50125" ng-init="Choix50125='Sous seing privé'">
                 <option>Sous seing privé</option>
                 <option>Authentique</option>
-                <option>Brevet</option>
             </select>
         </div>
 
         <div id="Section50128" ng-show="affichageSection50128()">
             <h1> Procuration pour Vendre </h1>
+            <p><b> Maître {{notaire.prenom}}  {{notaire.nom}} </b></p>
         </div>
 
         <div id="Section50126" ng-show="affichageSection50126()">
             <p>Acte N° {{codeActe}}</p>
-            <h4> L'an {{ annee }},</h4>
-            <h4> Le <input type="date" ng-model="dateActe"> ,
+            <h4> L'an <input type="text" ng-model="annee"> ,</h4>
+            <h4> Le <input type="text" ng-model="dateActe"> ,
             </h4>
-
             <select id="TypeOfficeNotarial" ng-model="ChoixTypeOffice" ng-init="ChoixTypeOffice='SCP'">
-                <option>SCP</option>
-                <option>SEL</option>
+            <option>SCP</option>
+            <option>SEL</option>
             </select>
-
-            <div id="SectionOfficeSCP" ng-show=affichageSectionOfficeSCP()>
-                <p><b> Maître {{notaire.prenom}}  {{notaire.nom}} </b> soussigné, notaire au sein de la Société Civile Professionnelle dénommée "{{office.nom}}" titulaire d'un Office Notarial à {{office.residence}} ({{office.codePostale}}), {{office.adresse}}.
-                    </p>
+            <div>
+                Adresse: <input type="checkbox" ng-model="adresseOffice" ng-init="adresseOffice=true">
             </div>
 
+            <div id="SectionOfficeSCP" ng-show="affichageSectionOfficeSCP()">
+                <p><b> Maître {{notaire.prenom}}  {{notaire.nom}} </b> soussigné, notaire au sein de la Société Civile Professionnelle dénommée "{{office.nom}}" titulaire d'un Office Notarial à {{office.residence}} ({{office.codePostale}})
+                    <opt ng-show="affichageAdresseOffice()">, {{office.adresse}}</opt>.
+                </p>
+            </div>
+
+            <div id="SectionOfficeSEL" ng-show="affichageSectionOfficeSEL()">
+                <p><b> Maître {{notaire.prenom}}  {{notaire.nom}} </b> soussigné, notaire au sein de la Société d'exercice libérale dénommée "{{office.nom}}" titulaire d'un Office Notarial à {{office.residence}} ({{office.codePostale}})
+                    <opt ng-show="affichageAdresseOffice()">, {{office.adresse}}</opt>.
+
+                </p>
+            </div>
 
         </div>
 
+        <div>
+            <p>
+                <b>A REÇU</b> à la requête des parties ci-après identifiées, le présent acte authentique sur support électronique, contenant : PROCURATION POUR VENDRE
+            </p>
+        </div>
+        <div>
+            <p>
+                PAR: <br/> {{comparant1.civilite}} {{comparant1.prenom}} {{comparant1.nom}}, demeurant à {{comparant1.adresse.ville}} ({{comparant1.adresse.code}}), {{comparant1.adresse.numVoie}} {{comparant1.adresse.nomVoie}}, Célibataire.
 
-    </div>
+            </p>
 
-    <script src="monController.js"></script>
+            <p>
+                AU PROFIT DE:
+            </p>
+
+            <p ng-show="mandantUnique()">
+                Ci-après dénommé le « MANDANT ».
+            </p>
+
+            <p ng-show="!mandantUnique()">
+                Ci-après dénommé les « MANDANTS ».
+            </p>
+
+            <div ng-repeat="mandant in mandants">
+                <p>
+                    <input type="text" ng-model="mandant.civilite"> <input type="text" ng-model="mandant.prenom"> <input type="text" ng-model="mandant.nom">, demeurant à <input type="text" ng-model="mandant.adresse.ville"> , <br \> (
+                    <input type="text" ng-model="mandant.adresse.code">) ,<input type="text" ng-model="mandant.adresse.numVoie"> <input type="text" ng-model="mandant.adresse.nomVoie">, Célibataire.
+                </p>
+            </div>
+            <input type="submit" value="+" ng-click="addMandant()">
+        </div>
+        <div>
+            <h3> POUVOIRS </h3>
+            <h4> A LEFFET DE : </h4>
+            <p> CONCLURE une vente </p>
+        </div>
+
+        <div>
+            <h4>DESIGNATION </h4>
+
+
+            <div ng-repeat="immeuble in immeubles">
+                <p>
+                    L'immeuble <input type="text" ng-model="immeuble.nom">, est situé à l'adresse : {{immeuble.adresse.ville}} ({{immeuble.adresse.code}}), {{immeuble.adresse.numVoie}} {{immeuble.adresse.nomVoie}}.
+
+                </p>
+            </div>
+
+            Prix fixe: <input type="checkbox" ng-model="prixFixe" ng-init="prixFixe=false">
+            <div ng-show="prixFixeChecked()">
+                <p> Les prix sont désigné dans le tableau suivant:</p>
+                <table>
+                    <tr>
+                        <th>Immeuble</th>
+                        <th>Prix</th>
+                    </tr>
+                    <tr ng-repeat="immeuble in immeubles">
+                        <td>{{immeuble.nom}}</td>
+                        <td>{{immeuble.prix}} €</td>
+                    </tr>
+                </table>
+            </div>
+            <div ng-show="!immeubleUnique()">
+                Ventes séparées possible : <input type="checkbox" ng-model="venteSep" ng-init="venteSep=true">
+                <div ng-show="venteSepChecked()">
+                    <p> Les deux immeubles peuvent être cendu séparément.
+                </div>
+
+            </div>
+        </div>
+
+        <script src="monController.js"></script>
+
 </body>
 
 </html>

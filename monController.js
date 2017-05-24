@@ -19,6 +19,66 @@ app.controller('monCtrl', function($scope) {
         adresse: "CENTRE D AFFAIRE LA CITY"
     }
 
+    $scope.comparant1 = {
+        civilite: "Mr",
+        prenom: "Jean",
+        nom: "Martin",
+        adresse: {
+            ville: "BESANCON",
+            code: 25000,
+            numVoie: 6,
+            nomVoie: "Rue Lafayette"
+        }
+    }
+
+
+    $scope.mandants = [{
+            civilite: "Mme",
+            prenom: "cathrine",
+            nom: "Dupond",
+            adresse: {
+                ville: "BESANCON",
+                code: 25000,
+                numVoie: 16,
+                nomVoie: "Avenue Chose"
+            }
+        },
+        {
+            civilite: "Mr",
+            prenom: "Phillipe",
+            nom: "Arthur",
+            adresse: {
+                ville: "BESANCON",
+                code: 25000,
+                numVoie: 20,
+                nomVoie: "Rue Truc"
+            }
+        }
+    ]
+
+
+
+    $scope.immeubles = [{
+            nom: "immeuble 1",
+            adresse: {
+                ville: "BESANCON",
+                code: 25000,
+                numVoie: 16,
+                nomVoie: "Avenue Chose"
+            },
+            prix: 500000
+        },
+        {
+            nom: "immeuble 2",
+            adresse: {
+                ville: "BESANCON",
+                code: 25000,
+                numVoie: 20,
+                nomVoie: "Rue Truc"
+            },
+            prix: 200000
+        }
+    ];
 
     $scope.affichageSection50128 = function() {
 
@@ -37,10 +97,9 @@ app.controller('monCtrl', function($scope) {
         }
     }
 
+    $scope.affichageAdresseOffice = function() {
 
-    $scope.affichageSectionOfficeSCP = function() {
-
-        if ($scope.ChoixTypeOffice == "SCP") {
+        if ($scope.adresseOffice) {
             return true;
         } else {
             return false;
@@ -55,5 +114,70 @@ app.controller('monCtrl', function($scope) {
             return false;
         }
     }
+
+    $scope.affichageSectionOfficeSEL = function() {
+
+        if ($scope.ChoixTypeOffice == "SEL") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    $scope.mandantUnique = function() {
+
+        if ($scope.mandants.length == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    $scope.immeubleUnique = function() {
+
+        if ($scope.immeubles.length == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    $scope.prixFixeChecked = function() {
+
+        if ($scope.prixFixe) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    $scope.venteSepChecked = function() {
+
+        if ($scope.venteSep) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    $scope.addMandant = function() {
+
+
+
+        $scope.mandants.push({
+            civilite: "Mr",
+            prenom: "Phillipe",
+            nom: "Arthur",
+            adresse: {
+                ville: "BESANCON",
+                code: 25000,
+                numVoie: 20,
+                nomVoie: "Rue Truc"
+            }
+        });
+
+
+    };
 
 });
