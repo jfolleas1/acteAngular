@@ -80,6 +80,9 @@ app.controller('monCtrl', function($scope) {
         }
     ];
 
+
+    // inteligence des boulléen 
+
     $scope.affichageSection50128 = function() {
 
         if ($scope.Choix50125 == "Sous seing privé") {
@@ -163,20 +166,17 @@ app.controller('monCtrl', function($scope) {
 
     $scope.addMandant = function() {
 
-
-
         $scope.mandants.push({
-            civilite: "Mr",
-            prenom: "Phillipe",
-            nom: "Arthur",
+            civilite: "",
+            prenom: "",
+            nom: "",
             adresse: {
-                ville: "BESANCON",
-                code: 25000,
-                numVoie: 20,
-                nomVoie: "Rue Truc"
+                ville: "",
+                code: 0,
+                numVoie: 0,
+                nomVoie: ""
             }
         });
-
 
     }
 
@@ -186,3 +186,10 @@ app.controller('monCtrl', function($scope) {
 
 
 });
+
+var listeInput = document.getElementsByTagName("input");
+for (var iter = 0; iter < listeInput.length; iter++) {
+    if (listeInput[iter].type == "text") {
+        listeInput[iter].style.width = ((listeInput[iter].value.length + 1) * 6) + 'px';
+    }
+}

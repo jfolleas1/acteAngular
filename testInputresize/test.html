@@ -3,14 +3,24 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Choix</title>
+    <title>test</title>
+    <link rel="stylesheet" type="text/css" href="test.css">
 </head>
 
 <body ng-app="">
 
-    <input id="txt" type="text" value="Hello World!" />
+    <input class="txt" type="text" value="" onkeypress="this.style.width = ((this.value.length) * 6) + 'px';">
+    <input class="txt" type="text" value="totototototo" onkeypress="this.style.width = ((this.value.length) * 6) + 'px';">
+    <input class="txt" type="text" value="totototototototototototototo" onkeypress="this.style.width = ((this.value.length) * 6) + 'px';">
 
 
 </body>
+
+<script>
+    var listeInput = document.getElementsByTagName("input");
+    for (var iter = 0; iter < listeInput.length; iter++) {
+        listeInput[iter].style.width = ((listeInput[iter].value.length + 1) * 6) + 'px';
+    }
+</script>
 
 </html>

@@ -29,15 +29,15 @@
 
         <div id="Section50126" ng-show="affichageSection50126()">
             <p>Acte N° {{codeActe}}</p>
-            <h4> L'an <input type="text" ng-model="annee"> ,</h4>
-            <h4> Le <input type="text" ng-model="dateActe"> ,
+            <h4> L'an <input type="text" ng-model="annee" onkeypress="this.style.width = ((this.value.length) * 8) + 'px';"> ,</h4>
+            <h4> Le <input type="text" ng-model="dateActe" onkeypress="this.style.width = ((this.value.length) * 8) + 'px';"> ,
             </h4>
             <select id="TypeOfficeNotarial" ng-model="ChoixTypeOffice" ng-init="ChoixTypeOffice='SCP'">
             <option>SCP</option>
             <option>SEL</option>
             </select>
             <div>
-                Adresse: <input type="checkbox" ng-model="adresseOffice" ng-init="adresseOffice=true">
+                Adresse: <input type="checkbox" ng-model="adresseOffice" ng-init="adresseOffice=true" onkeypress="this.style.width = ((this.value.length) * 8) + 'px';">
             </div>
 
             <div id="SectionOfficeSCP" ng-show="affichageSectionOfficeSCP()">
@@ -80,8 +80,9 @@
 
             <div ng-repeat="mandant in mandants">
                 <p>
-                    <input type="text" ng-model="mandant.civilite"> <input type="text" ng-model="mandant.prenom"> <input type="text" ng-model="mandant.nom">, demeurant à <input type="text" ng-model="mandant.adresse.ville"> , <br \> (
-                    <input type="text" ng-model="mandant.adresse.code">) ,<input type="text" ng-model="mandant.adresse.numVoie"> <input type="text" ng-model="mandant.adresse.nomVoie">, Célibataire.
+                    <input type="text" ng-model="mandant.civilite" onkeypress="this.style.width = ((this.value.length) * 8) + 'px';"> <input type="text" ng-model="mandant.prenom" onkeypress="this.style.width = ((this.value.length) * 8) + 'px';">
+                    <input type="text" ng-model="mandant.nom" onkeypress="this.style.width = ((this.value.length) * 8) + 'px';">, demeurant à <input type="text" ng-model="mandant.adresse.ville" onkeypress="this.style.width = ((this.value.length) * 8) + 'px';">                    , <br \> (
+                    <input type="text" ng-model="mandant.adresse.code" onkeypress="this.style.width = ((this.value.length) * 8) + 'px';">) ,<input type="text" ng-model="mandant.adresse.numVoie" onkeypress="this.style.width = ((this.value.length) * 8) + 'px';">                    <input type="text" ng-model="mandant.adresse.nomVoie" onkeypress="this.style.width = ((this.value.length) * 8) + 'px';">, Célibataire.
                     <input type="submit" value="-" ng-click="delMandant(index = $index)">
                 </p>
             </div>
@@ -99,7 +100,8 @@
 
             <div ng-repeat="immeuble in immeubles">
                 <p>
-                    L'immeuble <input type="text" ng-model="immeuble.nom">, est situé à l'adresse : {{immeuble.adresse.ville}} ({{immeuble.adresse.code}}), {{immeuble.adresse.numVoie}} {{immeuble.adresse.nomVoie}}.
+                    L'immeuble <input type="text" ng-model="immeuble.nom" onkeypress="this.style.width = ((this.value.length) * 8) + 'px';">, est situé à l'adresse : {{immeuble.adresse.ville}} ({{immeuble.adresse.code}}), {{immeuble.adresse.numVoie}}
+                    {{immeuble.adresse.nomVoie}}.
 
                 </p>
             </div>
@@ -128,6 +130,7 @@
         </div>
 
         <script src="monController.js"></script>
+
 
 </body>
 
